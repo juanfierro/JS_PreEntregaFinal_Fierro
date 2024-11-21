@@ -9,23 +9,28 @@
 </head>
 <body>
     <header>
-
+        <span>MiBouquet</span>
+        <div id="icono-carrito" onclick="">
+            <span id="contador-carrito">0</span>
+            <i class="fas fa-shopping-cart"></i>
+        </div>
     </header>
     <main class="fondo-principal">
-        <h1>MiBouquet</h1>
         <section class="search-section">
-            <h2>Catálogo</h2>
+            <h1>Catálogo</h1>
             <input type="text" id="busqueda" placeholder="Buscar productos...">
         </section>
         <section>
             <div id="productos" class="product-grid"></div>
         </section>
-        <hr>
-        <h2>Carrito de compras</h2>
-        <ul id="carrito"></ul>
-        <p id="total"></p>
+        <section>
+            <hr>
+            <h2>Carrito de compras</h2>
+            <ul id="carrito"></ul>
+            <p id="total"></p>
 
-        <button id="eliminarProductos">Eliminar productos</button>
+            <button id="eliminarProductos" class="eliminar-btn">Eliminar todos los productos</button>
+        </section>
     </main>
     <footer>
 

@@ -12,11 +12,15 @@ function mostrarProductos(filtro = '') {
     const productosDiv = document.getElementById('productos');
     productosDiv.innerHTML = '';
 
-
     const productosFiltrados = productos.filter(producto =>
         producto.nombre.toLowerCase().includes(filtro.toLowerCase())
     );
 
+    // Mensaje vacío si no hay productos filtrados
+    if (productosFiltrados.length === 0) {
+        productosDiv.innerHTML = '<p>No se encontraron productos.</p>';
+        return;
+    }
 
     productosFiltrados.forEach(producto => {
         const div = document.createElement('div');
@@ -26,7 +30,7 @@ function mostrarProductos(filtro = '') {
                     <img src="${producto.imagen}" alt="${producto.nombre}" class="img">
                 </div>
                 <div class="card-title">${producto.nombre}</div>
-                <div class="card-subtitle">${producto.descripcion}</div>
+                <div class="card-subtitle">${producto.descripcion || ''}</div>
                 <hr class="card-divider">
                 <div class="card-footer">
                     <div class="card-price">
@@ -34,14 +38,15 @@ function mostrarProductos(filtro = '') {
                     </div>
                     <div class="card-quantity">
                         <input type="number" class="quantity-input" id="cantidad-${producto.id}" min="1" value="1" style="width: 50px;"> 
-                        <button onclick="agregarAlCarrito(${producto.id})" class="card-btn"><i class="fas fa-cart-plus"></i> </button>
+                        <button onclick="agregarAlCarrito(${producto.id})" class="card-btn"><i class="fas fa-cart-plus"></i></button>
                     </div>
                 </div>
-                    </div>
+            </div>
         `;
         productosDiv.appendChild(div);
     });
 }
+
 
 
 function agregarAlCarrito(id) {
@@ -59,6 +64,7 @@ function agregarAlCarrito(id) {
 
     localStorage.setItem('carrito', JSON.stringify(carritoActual));
     mostrarCarrito();
+    actualizarContadorCarrito();
 }
 
 
@@ -68,10 +74,21 @@ function mostrarCarrito() {
     carritoList.innerHTML = '';
     let total = 0;
 
+    if (carritoActual.length === 0) {
+        carritoList.innerHTML = '<li>El carrito está vacío.</li>';
+        document.getElementById('total').textContent = 'Total: $0';
+        return;
+    }
+
     carritoActual.forEach((producto) => {
         let li = document.createElement('li');
         li.textContent = `${producto.nombre} - $${producto.precio} x ${producto.cantidad}`;
-        li.innerHTML += `<button onclick="eliminarDelCarrito(${producto.id})">Eliminar producto</button>`;
+        li.innerHTML += `
+            <button class="eliminar-btn" onclick="eliminarDelCarrito(${producto.id})">
+                <i class="fas fa-trash"></i> Eliminar
+            </button>
+        `;
+
         carritoList.appendChild(li);
         total += producto.precio * producto.cantidad;
     });
@@ -84,6 +101,7 @@ function mostrarCarrito() {
 document.getElementById('eliminarProductos').addEventListener('click', () => {
     localStorage.removeItem('carrito');
     mostrarCarrito();
+    actualizarContadorCarrito();
 });
 
 
@@ -92,7 +110,16 @@ function eliminarDelCarrito(id) {
     const nuevoCarrito = carritoActual.filter(producto => producto.id !== id);
     localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
     mostrarCarrito();
+    actualizarContadorCarrito();
 }
+
+
+function actualizarContadorCarrito() {
+    const carritoActual = JSON.parse(localStorage.getItem('carrito')) || [];
+    const totalProductos = carritoActual.reduce((acc, prod) => acc + prod.cantidad, 0);
+    document.getElementById('contador-carrito').textContent = totalProductos;
+}
+
 
 
 
@@ -103,4 +130,5 @@ document.getElementById('busqueda').addEventListener('input', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     mostrarProductos();
     mostrarCarrito();
+    actualizarContadorCarrito();
 });

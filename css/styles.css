@@ -16,8 +16,8 @@ body {
     padding: 0; }
 
 header {
-    background-color: #f8f8f8;
-    color: rgba(8, 7, 7, 0.692);
+    background-color: #0a0a0a;
+    color: rgba(255, 255, 255, 0.692);
     padding: 10px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
 
@@ -28,7 +28,8 @@ main {
 h1 {
     font-family: "Imperial Script", cursive;
     font-size: 4rem;
-    display: flex; }
+    display: flex; 
+    padding: 20px; }
 
 h2 {
     font-family: "Imperial Script", cursive;
@@ -53,6 +54,10 @@ h2 {
     background-size: cover;
     background-repeat: no-repeat; }
 
+.fondo-secundario {
+    background-image: url("../assets/img/fondo2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat; }
 
 
 
@@ -61,19 +66,22 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     flex-direction: row; }
-.search-section h2 {
+.search-section h1 {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
-    padding: 10px; }
+    padding: 10px;}
+    
 .search-section input {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
     padding: 10px;
     border: 1px solid #ccc;
     margin-right: 10px;
-    margin-top: 30px; }
+    margin-top: 30px; 
+    font-family: "Imperial Script";
+    font-size: 20px; }
 
 
 
@@ -114,7 +122,7 @@ h2 {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: center;
     padding: 20px;
     gap: 10px;
@@ -183,3 +191,22 @@ h2 {
     color: #fff; }
 .card .card-footer .card-btn:hover svg {
     fill: #fff; }
+
+
+
+
+/* boton eliminar carrito */
+.eliminar-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+    
+.eliminar-btn:hover {
+    background-color: #ff1a1a;
+}
+    
