@@ -1,18 +1,185 @@
-#productos{
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Imbue&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; }
+
+a {
+    text-decoration: none; }
+
+body {
+    font-family: "Imbue", sans-serif;
+    margin: 0;
+    padding: 0; }
+
+header {
+    background-color: #f8f8f8;
+    color: rgba(8, 7, 7, 0.692);
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+
+main {
+    padding: 20px;
+    text-align: center; }
+
+h1 {
+    font-family: "Imperial Script", cursive;
+    font-size: 4rem;
+    display: flex; }
+
+h2 {
+    font-family: "Imperial Script", cursive;
+    font-size: 3rem;
+    display: flex; }
+
+.fuente-imperial {
+    font-family: "Imperial Script", cursive;
+    font-size: 2.5rem; }
+
+.fuente-imbue {
+    font-family: "Imbue", sans-serif;
+    font-size: 2rem; }
+
+.fuente-italica {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-style: italic; }
+
+.fondo-principal {
+    background-image: url("../assets/img/eucalyptus.jpg");
+    background-size: cover;
+    background-repeat: no-repeat; }
+
+
+
+
+/* Estilos para la sección "Catálogo" */
+.search-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-direction: column; }
+.search-section h1 {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    padding: 10px; }
+.search-section input {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    margin-top: 30px; }
+
+
+
+
+/* Productos del Catálogo */
+.product-grid {
     display: grid;
-    grid-template-columns: repeat(3,200px);
-    justify-content: center;
-    gap: 1.875rem;
-}
-
-.card-container{
-    width: 200px;
-    height: 220px;
-    border: 1px solid black;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 50px; }
+.product-grid .product-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    padding: 20px;
     text-align: center;
-}
+    border: 1px solid #ccc; }
+.product-grid .product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px; }
+.product-grid .product-item .product-details {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; }
+.product-grid .product-item .product-details p {
+    margin: 0;
+    font-weight: bold; }
+.product-grid .product-item .product-details input {
+    width: 50px;
+    text-align: center; }
 
-.card-container h3{
-    font-size: 30px;
 
-}
+.card {
+    width: 230px;
+    height: 400px;
+    background-color: rgba(248, 248, 248, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+    font-family: Arial, Helvetica, sans-serif; }
+    .card .card-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
+.card .card-img .img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover; }
+.card .card-title {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: #333; }
+.card .card-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #666; }
+.card .card-divider {
+    width: 100%;
+    border: 1px solid #228b22;
+    border-radius: 50px; }
+.card .card-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+.card .card-footer .card-price {
+    font-size: 20px;
+    font-weight: 500;
+    color: #333; }
+.card .card-footer .card-price span {
+    font-size: 20px;
+    font-weight: 500;
+    color: #666; }
+.card .card-footer .card-quantity {
+    display: flex;
+    align-items: center; }
+.card .card-footer .card-quantity .quantity-input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: 2px solid #228b22;
+    border-radius: 5px;
+    margin: 0 5px;
+    font-size: 16px; }
+.card .card-footer .card-btn {
+    height: 35px;
+    background: #fff;
+    border: 2px solid #228b22;
+    border-radius: 5px;
+    padding: 0 10px;
+    cursor: pointer; }
+.card .card-footer .card-btn svg {
+    width: 100%;
+    height: 100%;
+    fill: #228b22;
+    transition: all 0.3s; }
+.card .card-footer .card-btn:hover {
+    background: #228b22;
+    color: #fff; }
+.card .card-footer .card-btn:hover svg {
+    fill: #fff; }

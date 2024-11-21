@@ -1,10 +1,10 @@
 let productos = [
-    { id: 1, nombre: 'Flor de solapa', precio: 10 },
-    { id: 2, nombre: 'Centros de Mesa', precio: 50 },
-    { id: 3, nombre: 'Coronas', precio: 100 },
-    { id: 4, nombre: 'Pulseras', precio: 20 },
-    { id: 5, nombre: 'Ramos', precio: 60 },
-    { id: 6, nombre: 'Estructuras', precio: 200 },
+    { id: 1, nombre: 'Flor de solapa', precio: 10 , imagen: '../assets/img/flor_de_solapa.jpg'},
+    { id: 2, nombre: 'Centros de Mesa', precio: 50 , imagen: '../assets/img/centros_de_mesa.jpg'},
+    { id: 3, nombre: 'Coronas', precio: 100 , imagen: '../assets/img/coronas.jpg'},
+    { id: 4, nombre: 'Pulseras', precio: 20 , imagen: '../assets/img/pulseras.jpg'},
+    { id: 5, nombre: 'Ramos', precio: 60 , imagen: '../assets/img/ramos.jpg'},
+    { id: 6, nombre: 'Estructuras', precio: 200 , imagen: '../assets/img/estructuras.jpg'},
 ];
 
 
@@ -21,10 +21,16 @@ function mostrarProductos(filtro = '') {
     productosFiltrados.forEach(producto => {
         const div = document.createElement('div');
         div.innerHTML = `
-            <h3>${producto.nombre}</h3>
-            <p>Precio: $${producto.precio}</p>
-            <input type="number" id="cantidad-${producto.id}" min="1" value="1" style="width: 50px;"> 
-            <button onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
+            <div class="card">
+                <div class="card-img">
+                    <img src="${producto.imagen}" alt="${producto.nombre}" class="img">
+                </div>
+                <h3>${producto.nombre}</h3>
+                <hr class="card-divider">
+                <p>Precio: $${producto.precio}</p>
+                <input type="number" id="cantidad-${producto.id}" min="1" value="1" style="width: 50px;"> 
+                <button onclick="agregarAlCarrito(${producto.id})"><i class="fas fa-cart-plus"></i> </button>
+            </div>
         `;
         productosDiv.appendChild(div);
     });
