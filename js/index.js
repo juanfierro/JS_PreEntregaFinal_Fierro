@@ -1,5 +1,5 @@
 let productos = [
-    { id: 1, nombre: 'Flor de solapa', precio: 10 , imagen: '../assets/img/flor_de_solapa.jpg'},
+    { id: 1, nombre: 'Flor de solapa', precio: 10 , imagen: '../assets/img/flor_de_solapa.jpg', descripcion:'Ramillete para el novio, hace juego con el ramo de la novia.'},
     { id: 2, nombre: 'Centros de Mesa', precio: 50 , imagen: '../assets/img/centros_de_mesa.jpg'},
     { id: 3, nombre: 'Coronas', precio: 100 , imagen: '../assets/img/coronas.jpg'},
     { id: 4, nombre: 'Pulseras', precio: 20 , imagen: '../assets/img/pulseras.jpg'},
@@ -25,12 +25,19 @@ function mostrarProductos(filtro = '') {
                 <div class="card-img">
                     <img src="${producto.imagen}" alt="${producto.nombre}" class="img">
                 </div>
-                <h3>${producto.nombre}</h3>
+                <div class="card-title">${producto.nombre}</div>
+                <div class="card-subtitle">${producto.descripcion}</div>
                 <hr class="card-divider">
-                <p>Precio: $${producto.precio}</p>
-                <input type="number" id="cantidad-${producto.id}" min="1" value="1" style="width: 50px;"> 
-                <button onclick="agregarAlCarrito(${producto.id})"><i class="fas fa-cart-plus"></i> </button>
-            </div>
+                <div class="card-footer">
+                    <div class="card-price">
+                        <p>$ ${producto.precio}</p>
+                    </div>
+                    <div class="card-quantity">
+                        <input type="number" class="quantity-input" id="cantidad-${producto.id}" min="1" value="1" style="width: 50px;"> 
+                        <button onclick="agregarAlCarrito(${producto.id})" class="card-btn"><i class="fas fa-cart-plus"></i> </button>
+                    </div>
+                </div>
+                    </div>
         `;
         productosDiv.appendChild(div);
     });
