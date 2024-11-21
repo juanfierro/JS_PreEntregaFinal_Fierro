@@ -1,0 +1,18 @@
+#productos{
+    display: grid;
+    grid-template-columns: repeat(3,200px);
+    justify-content: center;
+    gap: 1.875rem;
+}
+
+.card-container{
+    width: 200px;
+    height: 220px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.card-container h3{
+    font-size: 30px;
+
+}
