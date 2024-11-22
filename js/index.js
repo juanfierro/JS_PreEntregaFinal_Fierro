@@ -1,10 +1,10 @@
 let productos = [
     { id: 1, nombre: 'Flor de solapa', precio: 10 , imagen: '../assets/img/flor_de_solapa.jpg', descripcion:'Ramillete para el novio, hace juego con el ramo de la novia.'},
-    { id: 2, nombre: 'Centros de Mesa', precio: 50 , imagen: '../assets/img/centros_de_mesa.jpg'},
-    { id: 3, nombre: 'Coronas', precio: 100 , imagen: '../assets/img/coronas.jpg'},
-    { id: 4, nombre: 'Pulseras', precio: 20 , imagen: '../assets/img/pulseras.jpg'},
-    { id: 5, nombre: 'Ramos', precio: 60 , imagen: '../assets/img/ramos.jpg'},
-    { id: 6, nombre: 'Estructuras', precio: 200 , imagen: '../assets/img/estructuras.jpg'},
+    { id: 2, nombre: 'Centros de Mesa', precio: 50 , imagen: '../assets/img/centros_de_mesa.jpg', descripcion:'Ideal para darle vida a la mesa de invitados.'},
+    { id: 3, nombre: 'Coronas', precio: 100 , imagen: '../assets/img/coronas.jpg', descripcion: 'Corona de flores preservadas para cortejo, livianas y hechas a medida.'},
+    { id: 4, nombre: 'Pulseras', precio: 20 , imagen: '../assets/img/pulseras.jpg', descripcion: 'Tenemos muchos modelos para bodas y comuniones, elegí la que mas te guste!'},
+    { id: 5, nombre: 'Ramos', precio: 60 , imagen: '../assets/img/ramos.jpg', descripcion: 'Mira este ramo de blancos frescos, eucalipto y avenas que combinan perfectamente.'},
+    { id: 6, nombre: 'Estructuras', precio: 200 , imagen: '../assets/img/estructuras.jpg', descripcion: 'Bellisima ambientacion hecha de una combinacion de hierro, satin blanco, follaje y pmpagrass.'},
 ];
 
 
@@ -69,6 +69,18 @@ function agregarAlCarrito(id) {
     
     mostrarCarrito();
     actualizarContadorCarrito();
+
+
+    //Toast al agregar producto
+    Toastify({
+        text: `${producto.nombre} añadido al carrito`,
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        stopOnFocus: true,
+    }).showToast();
 }
 
 
