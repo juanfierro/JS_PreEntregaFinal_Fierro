@@ -1,17 +1,36 @@
-let productos = [
-    { id: 1, nombre: 'Flor de solapa', precio: 10 , imagen: '../assets/img/flor_de_solapa.jpg', descripcion:'Ramillete para el novio, hace juego con el ramo de la novia.'},
-    { id: 2, nombre: 'Centros de Mesa', precio: 50 , imagen: '../assets/img/centros_de_mesa.jpg', descripcion:'Ideal para darle vida a la mesa de invitados.'},
-    { id: 3, nombre: 'Coronas', precio: 100 , imagen: '../assets/img/coronas.jpg', descripcion: 'Corona de flores preservadas para cortejo, livianas y hechas a medida.'},
-    { id: 4, nombre: 'Pulseras', precio: 20 , imagen: '../assets/img/pulseras.jpg', descripcion: 'Tenemos muchos modelos para bodas y comuniones, elegí la que mas te guste!'},
-    { id: 5, nombre: 'Ramos', precio: 60 , imagen: '../assets/img/ramos.jpg', descripcion: 'Mira este ramo de blancos frescos, eucalipto y avenas que combinan perfectamente.'},
-    { id: 6, nombre: 'Estructuras', precio: 200 , imagen: '../assets/img/estructuras.jpg', descripcion: 'Bellisima ambientacion hecha de una combinacion de hierro, satin blanco, follaje y pmpagrass.'},
-];
-
+let productos = [];
 
 const carrito = [];
 const carritoSeccion = document.getElementById('carrito-seccion');
 const finalizarCompraBtn = document.getElementById('finalizar-compra');
 const carritoActual = JSON.parse(localStorage.getItem('carrito')) || [];
+
+
+function cargarProductos() {
+    fetch('productos.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al cargar los productos');
+            }
+            return response.json();
+        })
+        .then(data => {
+            productos = data;
+            mostrarProductos();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Toastify({
+                text: "Error al cargar los productos",
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                stopOnFocus: true
+            }).showToast();
+        });
+}
 
 function mostrarProductos(filtro = '') {
     const productosDiv = document.getElementById('productos');
@@ -171,6 +190,7 @@ document.getElementById('busqueda').addEventListener('input', (e) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    cargarProductos(); // Carga los productos desde el JSON 
     mostrarProductos();
     mostrarCarrito();
     actualizarContadorCarrito();
