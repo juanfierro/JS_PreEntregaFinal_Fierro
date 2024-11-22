@@ -8,6 +8,11 @@ let productos = [
 ];
 
 
+const carrito = [];
+const carritoSeccion = document.getElementById('carrito-seccion');
+const finalizarCompraBtn = document.getElementById('finalizar-compra');
+const carritoActual = JSON.parse(localStorage.getItem('carrito')) || [];
+
 function mostrarProductos(filtro = '') {
     const productosDiv = document.getElementById('productos');
     productosDiv.innerHTML = '';
@@ -47,8 +52,6 @@ function mostrarProductos(filtro = '') {
     });
 }
 
-
-
 function agregarAlCarrito(id) {
     const carritoActual = JSON.parse(localStorage.getItem('carrito')) || [];
     const producto = productos.find(prod => prod.id === id);
@@ -63,6 +66,7 @@ function agregarAlCarrito(id) {
     }
 
     localStorage.setItem('carrito', JSON.stringify(carritoActual));
+    
     mostrarCarrito();
     actualizarContadorCarrito();
 }
@@ -85,7 +89,7 @@ function mostrarCarrito() {
         li.textContent = `${producto.nombre} - $${producto.precio} x ${producto.cantidad}`;
         li.innerHTML += `
             <button class="eliminar-btn" onclick="eliminarDelCarrito(${producto.id})">
-                <i class="fas fa-trash"></i> Eliminar
+                <i class="fas fa-trash"></i> X
             </button>
         `;
 
@@ -121,7 +125,34 @@ function actualizarContadorCarrito() {
 }
 
 
+// Función para alternar el carrito
+function alternarCarrito() {
+    carritoSeccion.style.display = carritoSeccion.style.display === 'none' || carritoSeccion.style.display === '' ? 'block' : 'none';
+}
 
+
+function finalizarCompra() {
+    const carritoActual = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    if (carritoActual.length === 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Carrito vacío',
+            text: 'No hay productos en el carrito para finalizar la compra.',
+        });
+        return;
+    }
+    Swal.fire({
+        icon: 'success',
+        title: 'Compra finalizada',
+        text: '¡Gracias por tu compra! Tu pedido está en proceso.',
+    });
+
+    localStorage.removeItem('carrito');
+    mostrarCarrito();
+    actualizarContadorCarrito();
+    alternarCarrito();
+}
 
 document.getElementById('busqueda').addEventListener('input', (e) => {
     mostrarProductos(e.target.value);
@@ -131,4 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarProductos();
     mostrarCarrito();
     actualizarContadorCarrito();
+
+    
 });

@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>MiBouquet - Catálogo</title>
 </head>
 <body>
     <header>
-        <span>MiBouquet</span>
-        <div id="icono-carrito" onclick="">
+        <h2>Mi Bouquet</h2>
+        <div id="carrito-icon" onclick="alternarCarrito()">
             <span id="contador-carrito">0</span>
             <i class="fas fa-shopping-cart"></i>
         </div>
@@ -23,18 +24,19 @@
         <section>
             <div id="productos" class="product-grid"></div>
         </section>
-        <section>
+        <div id="carrito-seccion" style="display: none;">
             <hr>
-            <h2>Carrito de compras</h2>
+            <h3>Carrito de compras</h3>
             <ul id="carrito"></ul>
             <p id="total"></p>
-
             <button id="eliminarProductos" class="eliminar-btn">Eliminar todos los productos</button>
-        </section>
+            <button id="finalizar-compra" onclick="finalizarCompra()">Finalizar compra</button>
+        </div>
     </main>
     <footer>
 
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/index.js"></script>
 </body>
 </html>

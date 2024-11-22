@@ -33,8 +33,20 @@ h1 {
 
 h2 {
     font-family: "Imperial Script", cursive;
-    font-size: 3rem;
+    font-size: 2rem;
     display: flex; }
+
+h3 {
+    font-family: "Imperial Script", cursive;
+    font-size: 40px; }
+
+ul {
+    list-style-type: none;
+    padding: 0; }
+    
+ul li {
+    margin: 10px 0;
+    font-size: auto; }
 
 .fuente-imperial {
     font-family: "Imperial Script", cursive;
@@ -210,3 +222,39 @@ h2 {
     background-color: #ff1a1a;
 }
     
+
+#carrito-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+#carrito-seccion {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+#finalizar-compra {
+    background-color: goldenrod;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#finalizar-compra:hover {
+    background-color: green;
+}
